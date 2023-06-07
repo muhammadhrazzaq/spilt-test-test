@@ -21,9 +21,9 @@ jobs:
     steps:
       - id: generate-index-list
         run: |
-          MAX_INDEX=$((${{ env.total-runners }}-1))
-          INDEX_LIST=$(seq 0 ${MAX_INDEX})
-          echo "${INDEX_JSON}={$(jq --null-input --compact-output '. |= [inputs]' }" >> $GITHUB_STATE
+          echo "MAX_INDEX=$((${{ env.total-runners }}-1))" >> $GITHUB_STATE
+          echo "INDEX_LIST=${MAX_INDEX}" >> $GITHUB_STATE
+          echo "INDEX_JSON=$(jq --null-input --compact-output '. |= [inputs]' <<< ${INDEX_LIST})" >> $GITHUB_STATE
           echo "json=${INDEX_JSON}" >> $GITHUB_OUTPUT
 
   run-parallel-tests:
