@@ -4,11 +4,7 @@ on:
   push:
     branches:
     - main
-  pull_request:
-    types:
-    - opened
-    - syncronize
-    - reopened
+
 env:
   total-runners: 5
 
