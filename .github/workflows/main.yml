@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "MAX_INDEX=$((${{ env.total-runners }}-1))" >> $GITHUB_STATE
           echo "INDEX_LIST=$(seq 0 ${MAX_INDEX})" >> $GITHUB_STATE
-          echo "${INDEX_LIST}=$(jq --null-input --compact-output '. |= [inputs]'") >> $GITHUB_STATE
+          echo "${INDEX_LIST}=$(jq --null-input --compact-output '. |= [inputs]')" >> $GITHUB_STATE
           echo "json=${INDEX_JSON}" >> $GITHUB_OUTPUT
 
   run-parallel-tests:
